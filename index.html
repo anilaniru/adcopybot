@@ -1,37 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>AdCopyBot – AI-Powered Ad Generator</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/9112/9112060.png" type="image/png">
-    <meta name="description" content="Generate high-converting marketing ad copies using advanced AI. Try it free with AdCopyBot.">
-  </head>
-  <body>
-    <body style="font-family: Arial, sans-serif; background: #f7f8fa; margin: 0; padding: 0;">
-  <header style="background-color: #111827; padding: 20px; text-align: center; color: white;">
-    <h1 style="margin: 0; font-size: 2.5rem;">🚀 AdCopyBot</h1>
-    <p style="margin: 5px 0;">AI-powered tool to generate high-converting ad copies instantly</p>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AdCopyBot – AI Ad Generator</title>
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/9112/9112060.png" />
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9fafb;
+      color: #111827;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    textarea {
+      width: 100%;
+      font-size: 1rem;
+      padding: 1rem;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    #generateBtn {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: #3b82f6;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    #generateBtn:hover {
+      background: #2563eb;
+    }
+
+    #loading {
+      margin: 1rem 0;
+      font-style: italic;
+      color: #6b7280;
+    }
+
+    .ad-copy {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .copy-btn:hover {
+      background: #059669;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #111827;
+      color: white;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🚀 AdCopyBot</h1>
+    <p>Instant AI-Powered Ad Copy Generator</p>
   </header>
-      <main style="max-width: 700px; margin: 40px auto; padding: 20px;">
-    <label for="productInput" style="font-weight: bold;">Enter Product or Service Description:</label>
-    <textarea id="productInput" rows="4" placeholder="e.g., A smart mirror for fitness tracking..." style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;"></textarea>
 
-    <button onclick="generateAdCopy()" style="margin-top: 15px; padding: 10px 20px; background-color: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">
-      Generate Ad Copy
-    </button>
-
-    <h3 style="margin-top: 30px;">🧠 AI Generated Ad Copy:</h3>
-    <div id="output" style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; min-height: 100px;"></div>
+  <main>
+    <label for="productInput"><strong>Enter your product or service description:</strong></label>
+    <textarea id="productInput" placeholder="e.g., An AI mirror that helps you track fitness"></textarea>
+    <button id="generateBtn">Generate Ad Copy</button>
+    <div id="loading" class="hidden">⏳ Generating your ad copies...</div>
+    <div id="resultContainer"></div>
   </main>
-    <footer style="text-align: center; padding: 20px; background: #111827; color: white;">
-    © 2025 Tryloom | Powered by AdCopyBot
-  </footer>
+
+  <footer>© 2025 Tryloom | Built with ❤️ by AdCopyBot</footer>
+
+  <script type="module" src="script.js"></script>
 </body>
-
-
-
-
-    <script type="module" src="./script.js"></script>
-  </body>
 </html>
-
-
