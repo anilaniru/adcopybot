@@ -29,33 +29,40 @@ Each copy should:
 Output as plain text only.
 `;
 
-  const response = await ai.models.generateContentStream({
-    model: "gemini-2.0-flash",
-    contents: fullPrompt,
-  });
-
-  let text = "";
-  for await (const chunk of response) {
-    text += chunk.text || "";
-  }
-
-  loading.classList.add("hidden");
-  const ads = text.split(/\n?\d\.\s*/).filter(Boolean);
-
-  ads.forEach((ad, index) => {
-    const div = document.createElement("div");
-    div.className = "ad-copy";
-    div.innerHTML = `
-      <strong>Ad ${index + 1}</strong><br>${ad}
-      <button class="copy-btn">📋</button>
-    `;
-    resultContainer.appendChild(div);
-
-    const copyBtn = div.querySelector(".copy-btn");
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(ad);
-      copyBtn.textContent = "✅ Copied!";
-      setTimeout(() => (copyBtn.textContent = "📋"), 1500);
+  try {
+    const response = await ai.models.generateContentStream({
+      model: "gemini-2.0-flash",
+      contents: fullPrompt,
     });
-  });
+
+    let text = "";
+    for await (const chunk of response) {
+      text += chunk.text || "";
+    }
+
+    loading.classList.add("hidden");
+
+    const ads = text.split(/\n?\d\.\s*/).filter(Boolean);
+
+    ads.forEach((ad, index) => {
+      const div = document.createElement("div");
+      div.className = "ad-copy";
+      div.innerHTML = `
+        <strong>Ad ${index + 1}</strong><br>${ad}
+        <button class="copy-btn">📋</button>
+      `;
+      resultContainer.appendChild(div);
+
+      const copyBtn = div.querySelector(".copy-btn");
+      copyBtn.addEventListener("click", () => {
+        navigator.clipboard.writeText(ad);
+        copyBtn.textContent = "✅ Copied!";
+        setTimeout(() => (copyBtn.textContent = "📋"), 1500);
+      });
+    });
+  } catch (error) {
+    loading.classList.add("hidden");
+    resultContainer.innerHTML = `<p style="color:red;">❌ Failed to generate ad copies. Please try again.</p>`;
+    console.error(error);
+  }
 });
