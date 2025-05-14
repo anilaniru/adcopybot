@@ -11,6 +11,18 @@
     <h1 style="margin: 0; font-size: 2.5rem;">🚀 AdCopyBot</h1>
     <p style="margin: 5px 0;">AI-powered tool to generate high-converting ad copies instantly</p>
   </header>
+      <main style="max-width: 700px; margin: 40px auto; padding: 20px;">
+    <label for="productInput" style="font-weight: bold;">Enter Product or Service Description:</label>
+    <textarea id="productInput" rows="4" placeholder="e.g., A smart mirror for fitness tracking..." style="width: 100%; padding: 10px; border-radius: 6px; border: 1px solid #ccc; font-size: 1rem;"></textarea>
+
+    <button onclick="generateAdCopy()" style="margin-top: 15px; padding: 10px 20px; background-color: #3b82f6; color: white; border: none; border-radius: 6px; font-size: 1rem; cursor: pointer;">
+      Generate Ad Copy
+    </button>
+
+    <h3 style="margin-top: 30px;">🧠 AI Generated Ad Copy:</h3>
+    <div id="output" style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 8px; min-height: 100px;"></div>
+  </main>
+
 
 
     <script type="module" src="./script.js"></script>
